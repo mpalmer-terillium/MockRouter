@@ -1,0 +1,7 @@
+*.gch
+out/
+*.xml
+vgcore*
+*.properties
+*.txt
+*.MF
