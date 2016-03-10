@@ -29,26 +29,25 @@ public class RouterEventLoop implements Runnable {
                     routeMessage(message);
                 }
            } catch (Exception e) {
-               
+               logger.log(Level.SEVERE, e.toString());
            }
        }
     }
     
     private static void routeMessage(Message m) {
-
         switch (m.getType()) {
 
             case PAY_TRACE:
-//                MockIntegrationResponse ccResponse  = doCCIntegration(new MockIntegrationRequest(
-//                        IntegrationType.PayTrace, "100.00", "Authorization"));
-//                logger.info(ccResponse.getResponse());
+                MockIntegrationResponse ccResponse  = doCCIntegration(new MockIntegrationRequest(
+                        IntegrationType.PayTrace, "100.00", "Authorization"));
+                logger.log(Level.INFO, "Response: {0}", ccResponse.getResponse());
                 logger.info("PayTrace Integration Call");
                 break;
 
             case SALES_CLOUD:
-//                MockIntegrationResponse oscResponse = doOSCIntegration(new MockIntegrationRequest(
-//                        IntegrationType.SalesCloud, "TEST OP WS", "READ"));
-//                logger.info(oscResponse.getResponse());
+                MockIntegrationResponse oscResponse = doOSCIntegration(new MockIntegrationRequest(
+                        IntegrationType.SalesCloud, "TEST OP WS", "READ"));
+                logger.log(Level.INFO, "Response: {0}", oscResponse.getResponse());
                 logger.info("SalesCloud Integration Call");
                 break;
 
